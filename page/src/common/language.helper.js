@@ -51,7 +51,7 @@ export const LANGUAGES = {
     },
     'bu': {
         langCode: "bu",
-        name: "Belorussian",
+        name: "Belarusian",
         icon: "🌼"
     },
     'uk': {

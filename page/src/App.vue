@@ -46,8 +46,8 @@
                   <v-img
                     class="ma-2"
                     :src="getFlagImgPath(langCodeFrom)"
-                    min-width="35px"
-                    min-height="35px"
+                    width="35px"
+                    height="35px"
                   />
                 </v-btn>
               </template>
@@ -56,12 +56,14 @@
                   <v-list-item-title @click="changeLangFrom(item.langCode)">
                     <div class="d-flex">
                       <v-img
-                        class=""
                         :src="getFlagImgPath(item.langCode)"
+                        min-width="35"
                         max-width="35"
-                        max-height="35"
+                        height="35"
                       />
-                      <div class="ml-4 align-self-center">{{ item.name }}</div>
+                      <div class="ml-4 align-self-center">
+                        {{ item.name }}
+                      </div>
                     </div>
                   </v-list-item-title>
                 </v-list-item>
@@ -88,8 +90,9 @@
                       <v-img
                         class=""
                         :src="getFlagImgPath(item.langCode)"
+                        min-width="35"
                         max-width="35"
-                        max-height="35"
+                        height="35"
                       />
                       <div class="ml-4 align-self-center">{{ item.name }}</div>
                     </div>
