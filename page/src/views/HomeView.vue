@@ -5,12 +5,12 @@
         <v-img src="/src/assets/logo.svg" class="my-3" contain height="200" />
       </v-col> -->
 
-      <v-col cols="6" justify="center"
-        ><h2>{{ leftData["head"]["title"] }}</h2>
+      <v-col cols="6" justify="center">
+        <h2>{{ leftData["head"] ? leftData["head"]["title"] : "" }}</h2>
         {{ leftData["body"] }}</v-col
       >
       <v-col cols="6" justify="center">
-        <h2>{{ rightData["head"]["title"] }}</h2>
+        <h2>{{ rightData["head"] ? rightData["head"]["title"] : "" }}</h2>
         {{ rightData["body"] }}</v-col
       >
     </v-row>

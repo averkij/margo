@@ -135,7 +135,7 @@ export default {
   }),
   methods: {
     getFlagImgPath(code) {
-      return `/src/assets/flags/flag-${code}-h.svg`;
+      return new URL(`./assets/flags/flag-${code}-h.svg`, import.meta.url).href;
     },
     changeLangFrom(code) {
       this.$router.push({
