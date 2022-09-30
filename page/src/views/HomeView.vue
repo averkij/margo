@@ -6,12 +6,12 @@
       </v-col> -->
 
       <v-col cols="6" justify="center"
-        ><h2>{{ langCodeFrom }}</h2>
-        {{ leftData }}</v-col
+        ><h2>{{ leftData["head"]["title"] }}</h2>
+        {{ leftData["body"] }}</v-col
       >
       <v-col cols="6" justify="center">
-        <h2>{{ langCodeTo }}</h2>
-        {{ rightData }}</v-col
+        <h2>{{ rightData["head"]["title"] }}</h2>
+        {{ rightData["body"] }}</v-col
       >
     </v-row>
   </v-container>
@@ -22,20 +22,13 @@ import { defineComponent } from "vue";
 import { LANGUAGES } from "@/common/language.helper";
 import { DEFAULT_FROM, DEFAULT_TO } from "@/common/language.helper";
 import { DEFAULT_PART } from "@/common/helper";
-import exampleText from "/src/assets/book/en/1.txt?raw";
 
 // Components
 import Book from "../components/Book.vue";
 
 const data = import.meta.glob(`../assets/book/**`, {
   as: "raw",
-  // eager: true,
 });
-
-// const leftData = await import(`/src/assets/book/${$route.params.from}/1.txt`, {
-//   as: "raw",
-//   eager: true,
-// });
 
 export default defineComponent({
   name: "HomeView",
@@ -50,19 +43,20 @@ export default defineComponent({
       DEFAULT_PART,
       leftData: "loading...",
       rightData: "loading...",
+      maxPartId: 33,
     };
   },
   methods: {
     getFrom() {
-      let path = `../assets/book/${this.langCodeFrom}/1.txt`;
-      data[path]().then((resp) => {
-        this.leftData = resp;
+      let path = `../assets/book/${this.langCodeFrom}/${this.currPart}.txt`;
+      data[path]().then((resp_json) => {
+        this.leftData = JSON.parse(resp_json);
       });
     },
     getTo() {
-      let path = `../assets/book/${this.langCodeTo}/1.txt`;
-      data[path]().then((resp) => {
-        this.rightData = resp;
+      let path = `../assets/book/${this.langCodeTo}/${this.currPart}.txt`;
+      data[path]().then((resp_json) => {
+        this.rightData = JSON.parse(resp_json);
       });
     },
     getBoth() {
@@ -85,19 +79,13 @@ export default defineComponent({
       }
       return DEFAULT_TO;
     },
-    // leftData() {
-    //   return import(
-    //     // `${import.meta.env.BASE_URL}src/assets/book/${this.langCodeFrom}/1.txt`,
-    //     `../assets/book/${this.langCodeFrom}/1.txt`,
-    //     {
-    //       as: "raw",
-    //       // eager: true,
-    //     }
-    //   ).then((response) => {
-    //     console.log(response);
-    //     return response;
-    //   });
-    // },
+    currPart() {
+      let part_id = this.$route.params.part;
+      if (part_id < 1 || part_id > this.maxPartId) {
+        return DEFAULT_PART;
+      }
+      return part_id;
+    },
   },
   watch: {
     langCodeFrom() {
