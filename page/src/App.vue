@@ -120,6 +120,7 @@
 <script>
 import { LANGUAGES } from "@/common/language.helper";
 import { DEFAULT_FROM, DEFAULT_TO } from "@/common/language.helper";
+import { DEFAULT_PART } from "@/common/helper";
 
 export default {
   name: "App",
@@ -138,12 +139,12 @@ export default {
     },
     changeLangFrom(code) {
       this.$router.push({
-        path: `//${this.$route.name}/${code}/${this.langCodeTo}`,
+        path: `/${DEFAULT_PART}/${code}/${this.langCodeTo}`,
       });
     },
     changeLangTo(code) {
       this.$router.push({
-        path: `/user/${this.$route.params.username}/${this.$route.name}/${this.langCodeFrom}/${code}`,
+        path: `/${DEFAULT_PART}/${this.langCodeFrom}/${code}`,
       });
     },
     goToGithub() {
