@@ -1,3 +1,8 @@
+
+  <style>
+@import "./assets/main.css";
+</style>
+
 <template>
   <v-app>
     <!-- Left drawer menu -->
@@ -139,12 +144,12 @@ export default {
     },
     changeLangFrom(code) {
       this.$router.push({
-        path: `/${DEFAULT_PART}/${code}/${this.langCodeTo}`,
+        path: `/${this.currPart}/${code}/${this.langCodeTo}`,
       });
     },
     changeLangTo(code) {
       this.$router.push({
-        path: `/${DEFAULT_PART}/${this.langCodeFrom}/${code}`,
+        path: `/${this.currPart}/${this.langCodeFrom}/${code}`,
       });
     },
     goToGithub() {
@@ -170,6 +175,13 @@ export default {
         return langCode;
       }
       return DEFAULT_TO;
+    },
+    currPart() {
+      let part_id = this.$route.params.part;
+      if (part_id < 1 || part_id > this.maxPartId) {
+        return DEFAULT_PART;
+      }
+      return part_id;
     },
   },
 };
