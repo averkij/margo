@@ -29,26 +29,26 @@ export const LANGUAGES = {
         name: "Spanish",
         icon: "🍅"
     },
-    'pt': {
-        langCode: "pt",
-        name: "Portugal",
-        icon: "🍊"
-    },
-    'tr': {
-        langCode: "tr",
-        name: "Turkish",
-        icon: "☕️"
-    },
-    'cz': {
-        langCode: "cz",
-        name: "Czech",
-        icon: "🍺"
-    },
-    'pl': {
-        langCode: "pl",
-        name: "Polish",
-        icon: "🍬"
-    },
+    // 'pt': {
+    //     langCode: "pt",
+    //     name: "Portugal",
+    //     icon: "🍊"
+    // },
+    // 'tr': {
+    //     langCode: "tr",
+    //     name: "Turkish",
+    //     icon: "☕️"
+    // },
+    // 'cz': {
+    //     langCode: "cz",
+    //     name: "Czech",
+    //     icon: "🍺"
+    // },
+    // 'pl': {
+    //     langCode: "pl",
+    //     name: "Polish",
+    //     icon: "🍬"
+    // },
     'bu': {
         langCode: "bu",
         name: "Belarusian",
