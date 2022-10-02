@@ -1,27 +1,42 @@
 @import "./base.css";
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  /* max-width: 1280px; */
+  /* margin: 0 auto; */
+  /* padding: 2rem; */
 
-  font-weight: normal;
+  /* font-weight: normal; */
 }
 
-a,
+/* a,
 .green {
   text-decoration: none;
   color: hsla(160, 100%, 37%, 1);
   transition: 0.4s;
+} */
+
+p {
+  padding-bottom: 10px;
+  text-indent: 20px;
 }
 
-@media (hover: hover) {
+/* .s0 {background: #cfefd7; color: "black"}
+.s1 {background: #fadce2; color: "black"}
+.s2 {background: #cce7eb; color: "black"}
+.s3 {background: #fefbd6; color: "black"} */
+
+.s0 {border-bottom: 2px solid #7cf39a;}
+.s1 {border-bottom: 2px solid #d7554c;}
+.s2 {border-bottom: 2px solid #7bbee7;}
+.s3 {border-bottom: 2px solid #f8ec65;}
+
+/* @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
   }
-}
+} */
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   body {
     display: flex;
     place-items: center;
@@ -32,4 +47,4 @@ a,
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   }
-}
+} */
