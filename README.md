@@ -7,3 +7,6 @@ Transformer book. Multilingual parallel version of 'Master and Margarita' novel 
 👉 Book is here:
 https://averkij.github.io/margo
 
+## How to make yours
+
+Books were aligned with the [Lingtrain Alignment Studio](https://github.com/averkij/a-studio) project. 
