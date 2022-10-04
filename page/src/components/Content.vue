@@ -7,7 +7,7 @@
       <h2 class="mb-2">{{ data.c }}</h2>
     </div>
     <p v-else-if="data.t == 'text'">
-      <span :class="['s' + (i % 4)]" v-for="(sent, i) in data.c" :key="i">
+      <span :class="['s' + ((num + i) % 4)]" v-for="(sent, i) in data.c" :key="i">
         {{ sent }}&nbsp;
       </span>
     </p>
@@ -18,13 +18,8 @@
 <script>
 export default {
   name: "Content",
-  props: ["data"],
+  props: ["data", "num"],
   data: () => ({}),
-  methods: {
-    // renderText(data) {
-    //   let text = data.t
-    //   re
-    // }
-  },
+  methods: {},
 };
 </script>

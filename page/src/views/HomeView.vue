@@ -2,22 +2,8 @@
   <v-container>
     <!-- items -->
     <div v-for="(line, i) in items" :key="i">
-      <ParagraphPair :item="line"> </ParagraphPair>
+      <ParagraphPair :item="line" :num="accSentCounter[i]"> </ParagraphPair>
     </div>
-
-    <!-- <v-row class="text-center">
-       <v-col cols="12">
-        <v-img src="/src/assets/logo.svg" class="my-3" contain height="200" />
-      </v-col> 
-      <v-col cols="6" justify="center">
-        <h2>{{ leftData["head"] ? leftData["head"]["title"] : "" }}</h2>
-        {{ leftData["body"] }}</v-col
-      >
-      <v-col cols="6" justify="center">
-        <h2>{{ rightData["head"] ? rightData["head"]["title"] : "" }}</h2>
-        {{ rightData["body"] }}</v-col
-      >
-    </v-row> -->
   </v-container>
 </template>
 
@@ -46,10 +32,11 @@ export default defineComponent({
       DEFAULT_FROM,
       DEFAULT_TO,
       DEFAULT_PART,
-      leftData: "loading...",
-      rightData: "loading...",
+      leftData: {},
+      rightData: {},
       maxPartId: 33,
       items: [],
+      accSentCounter: [] //for correct sentence-level highlighting
     };
   },
   methods: {
@@ -76,8 +63,23 @@ export default defineComponent({
       this.getTo(this.langCodeTo);
     },
     updateItems() {
+      if (this.accSentCounter.length == 0) {
+        this.calcSentCounter(this.leftData["body"]);
+      }
       this.items = zip(this.leftData["body"], this.rightData["body"]);
     },
+    calcSentCounter(paragraphs) {
+      let c = 0;
+      this.accSentCounter = [0]
+      paragraphs.forEach((par) => {
+        if (par["t"] != "text") {
+          this.accSentCounter.push(0);
+        } else {
+          c += par["c"].length;
+          this.accSentCounter.push(c);
+        }
+      });
+    }
   },
   computed: {
     langCodeFrom() {
