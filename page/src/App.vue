@@ -40,11 +40,11 @@
             <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
           </v-col>
 
-          <v-col cols="5" sm="5" class="text-right">
+          <v-col cols="5" sm="5" class="text-center">
             <v-spacer />
-            <div class="pa-2 font-josefin d-inline-block">
+            <!-- <div class="pa-2 font-josefin d-inline-block">
               {{ LANGUAGES[langCodeFrom].name }}
-            </div>
+            </div> -->
             <v-menu offset-y>
               <template v-slot:activator="{ props }">
                 <v-btn icon color="blue" v-bind="props">
@@ -76,7 +76,7 @@
             </v-menu>
           </v-col>
 
-          <v-col cols="5" sm="5">
+          <v-col cols="5" sm="5" class="text-center">
             <v-menu offset-y>
               <template v-slot:activator="{ props }">
                 <v-btn icon color="blue" v-bind="props">
@@ -105,9 +105,9 @@
                 </v-list-item>
               </v-list>
             </v-menu>
-            <div class="pa-2 font-josefin d-inline-block">
+            <!-- <div class="pa-2 font-josefin d-inline-block">
               {{ LANGUAGES[langCodeTo].name }}
-            </div>
+            </div> -->
             <v-spacer />
           </v-col>
         </v-row>
