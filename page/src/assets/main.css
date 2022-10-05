@@ -28,10 +28,10 @@ span {
   transition: 0.15s linear;
 }
 
-.s0 {border-bottom: 2px solid #7cf39a;}
+/* .s0 {border-bottom: 2px solid #7cf39a;}
 .s1 {border-bottom: 2px solid #d7554c;}
 .s2 {border-bottom: 2px solid #7bbee7;}
-.s3 {border-bottom: 2px solid #f8ec65;}
+.s3 {border-bottom: 2px solid #f8ec65;} */
 
 .h { background-color: #ffffd5; cursor: pointer;}
 
