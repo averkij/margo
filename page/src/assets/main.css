@@ -18,6 +18,12 @@ p {
 .s2 {background: #cce7eb; color: "black"}
 .s3 {background: #fefbd6; color: "black"} */
 
+.my-toolbar {
+  font-weight: bold;
+  /* background-color: #fffddc !important; */
+  /* color: white !important;*/
+} 
+
 span {
   transition: 0.15s linear;
 }

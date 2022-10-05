@@ -33,14 +33,14 @@
     </v-navigation-drawer>
 
     <!-- Top app bar -->
-    <v-card>
-      <v-toolbar color="white">
+    <v-card flat>
+      <v-toolbar class="my-toolbar" extended>
         <v-row>
-          <v-col cols="12" sm="1">
+          <v-col cols="1" sm="1">
             <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
           </v-col>
 
-          <v-col cols="12" sm="5" class="text-right">
+          <v-col cols="5" sm="5" class="text-right">
             <v-spacer />
             <div class="pa-2 font-josefin d-inline-block">
               {{ LANGUAGES[langCodeFrom].name }}
@@ -76,7 +76,7 @@
             </v-menu>
           </v-col>
 
-          <v-col cols="12" sm="5">
+          <v-col cols="5" sm="5">
             <v-menu offset-y>
               <template v-slot:activator="{ props }">
                 <v-btn icon color="blue" v-bind="props">
