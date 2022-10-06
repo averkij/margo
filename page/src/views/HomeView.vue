@@ -1,10 +1,10 @@
 <template>
-  <v-container>
+  <div>
     <!-- items -->
     <div v-for="(line, i) in items" :key="i">
       <ParagraphPair :item="line" :num="accSentCounter[i]"> </ParagraphPair>
     </div>
-  </v-container>
+  </div>
 </template>
 
 <script>
@@ -36,7 +36,7 @@ export default defineComponent({
       rightData: {},
       maxPartId: 33,
       items: [],
-      accSentCounter: [] //for correct sentence-level highlighting
+      accSentCounter: [], //for correct sentence-level highlighting
     };
   },
   methods: {
@@ -70,7 +70,7 @@ export default defineComponent({
     },
     calcSentCounter(paragraphs) {
       let c = 0;
-      this.accSentCounter = [0]
+      this.accSentCounter = [0];
       paragraphs.forEach((par) => {
         if (par["t"] != "text") {
           this.accSentCounter.push(0);
@@ -79,7 +79,7 @@ export default defineComponent({
           this.accSentCounter.push(c);
         }
       });
-    }
+    },
   },
   computed: {
     langCodeFrom() {

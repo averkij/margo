@@ -1,21 +1,35 @@
 <template>
   <div>
-    <v-row justify="center" class="px-0 px-md-5 px-sm-2" no-gutters>
-      <v-col cols="12" sm="6" justify="center" class="px-0 px-md-5 px-sm-2">
-        <Content 
+    <v-row justify="center" class="px-lg-12 px-md-0" no-gutters>
+      <v-col
+        cols="12"
+        sm="6"
+        justify="center"
+        class="px-lg-8 px-md-4 px-sm-2 px-0"
+      >
+        <Content
           @onHover="onHoverLeft"
           @onLeave="onLeaveLeft"
           :highlightNum="highlightNumLeft"
           :data="item[0]"
-          :num="num"> </Content
+          :num="num"
+        >
+        </Content
       ></v-col>
-      <v-col cols="12" sm="6" justify="center" class="px-0 px-md-5 px-sm-2">
+      <v-col
+        cols="12"
+        sm="6"
+        justify="center"
+        class="px-lg-8 px-md-2 px-sm-2 px-0"
+      >
         <Content
           @onHover="onHoverRight"
           @onLeave="onLeaveRight"
           :data="item[1]"
           :num="num"
-          :highlightNum="highlightNumRight"> </Content
+          :highlightNum="highlightNumRight"
+        >
+        </Content
       ></v-col>
     </v-row>
   </div>
@@ -47,7 +61,7 @@ export default {
     },
     onLeaveRight() {
       this.highlightNumLeft = -1;
-    }
-  }
+    },
+  },
 };
 </script>

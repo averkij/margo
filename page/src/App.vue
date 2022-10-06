@@ -34,13 +34,13 @@
 
     <!-- Top app bar -->
     <v-card flat>
-      <v-toolbar class="my-toolbar" extended>
+      <v-toolbar class="my-toolbar" extended hide-on-scroll flat>
         <v-row>
-          <v-col cols="1" sm="1">
+          <v-col cols="2">
             <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
           </v-col>
 
-          <v-col cols="5" sm="5" class="text-center">
+          <v-col cols="4" class="text-center">
             <v-spacer />
             <!-- <div class="pa-2 font-josefin d-inline-block">
               {{ LANGUAGES[langCodeFrom].name }}
@@ -76,7 +76,7 @@
             </v-menu>
           </v-col>
 
-          <v-col cols="5" sm="5" class="text-center">
+          <v-col cols="4" class="text-center">
             <v-menu offset-y>
               <template v-slot:activator="{ props }">
                 <v-btn icon color="blue" v-bind="props">
@@ -111,11 +111,47 @@
             <v-spacer />
           </v-col>
         </v-row>
+        <template v-slot:extension>
+          <v-container>
+            <v-row class="px-lg-14 px-md-1">
+              <v-col cols="6" class="text-left px-lg-6 px-md-4 px-sm-2 px-0">
+                <v-btn icon color="blue">
+                  <v-icon color="grey">
+                    mdi-format-font-size-increase
+                  </v-icon></v-btn
+                >
+                <v-btn icon color="blue">
+                  <v-icon color="grey">
+                    mdi-format-font-size-decrease
+                  </v-icon></v-btn
+                >
+                <v-btn icon color="blue">
+                  <v-icon color="grey"> mdi-eye </v-icon></v-btn
+                >
+              </v-col>
+              <v-col cols="6" class="text-left px-lg-6 px-md-0 px-sm-0 px-0">
+                <v-btn icon color="blue">
+                  <v-icon color="grey">
+                    mdi-format-font-size-increase
+                  </v-icon></v-btn
+                >
+                <v-btn icon color="blue">
+                  <v-icon color="grey">
+                    mdi-format-font-size-decrease
+                  </v-icon></v-btn
+                >
+                <v-btn icon color="blue">
+                  <v-icon color="grey"> mdi-eye </v-icon></v-btn
+                >
+              </v-col>
+            </v-row>
+          </v-container>
+        </template>
       </v-toolbar>
     </v-card>
 
     <v-main>
-      <v-container class="pb-15">
+      <v-container class="pb-15 pt-8">
         <router-view></router-view>
       </v-container>
     </v-main>
