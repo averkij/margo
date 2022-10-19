@@ -124,12 +124,12 @@
                 >
               </v-col>
               <v-col cols="6" class="text-left px-lg-6 px-md-0 px-sm-0 px-0">
-                <v-btn icon color="blue">
+                <v-btn icon color="blue" @click="decreaseFontRight()">
                   <v-icon color="grey">
                     mdi-format-font-size-decrease
                   </v-icon></v-btn
                 >
-                <v-btn icon color="blue">
+                <v-btn icon color="blue" @click="increaseFontRight()">
                   <v-icon color="grey">
                     mdi-format-font-size-increase
                   </v-icon></v-btn
@@ -153,7 +153,6 @@
 </template>
 
 <script>
-import { SettingsHelper } from "@/common/settings.helper";
 import { LANGUAGES, DEFAULT_FROM, DEFAULT_TO } from "@/common/language.helper";
 import { DEFAULT_PART, PARTS_AMOUNT } from "@/common/helper";
 
@@ -205,6 +204,12 @@ export default {
     },
     increaseFontLeft() {
       localStorage.fontSizeLeft = "2";
+    },
+    decreaseFontRight() {
+      localStorage.fontSizeRight = "1";
+    },
+    increaseFontRight() {
+      localStorage.fontSizeRight = "2";
     },
   },
   computed: {
