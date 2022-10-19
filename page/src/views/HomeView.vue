@@ -11,7 +11,7 @@
 import { defineComponent } from "vue";
 import { LANGUAGES } from "@/common/language.helper";
 import { DEFAULT_FROM, DEFAULT_TO } from "@/common/language.helper";
-import { DEFAULT_PART } from "@/common/helper";
+import { DEFAULT_PART, PARTS_AMOUNT } from "@/common/helper";
 
 // Components
 import ParagraphPair from "../components/ParagraphPair.vue";
@@ -32,9 +32,9 @@ export default defineComponent({
       DEFAULT_FROM,
       DEFAULT_TO,
       DEFAULT_PART,
+      PARTS_AMOUNT,
       leftData: {},
       rightData: {},
-      maxPartId: 33,
       items: [],
       accSentCounter: [], //for correct sentence-level highlighting
     };
@@ -98,7 +98,7 @@ export default defineComponent({
     },
     currPart() {
       let part_id = this.$route.params.part;
-      if (part_id < 1 || part_id > this.maxPartId) {
+      if (part_id < 1 || part_id > PARTS_AMOUNT) {
         return DEFAULT_PART;
       }
       return part_id;
@@ -109,6 +109,10 @@ export default defineComponent({
       this.getFrom();
     },
     langCodeTo() {
+      this.getTo();
+    },
+    currPart() {
+      this.getFrom();
       this.getTo();
     },
   },

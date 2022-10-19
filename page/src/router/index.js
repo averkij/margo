@@ -21,7 +21,6 @@ const router = createRouter({
     {
       path: '/:part/:from/:to',
       name: 'book',
-      // component: () => import("@/views/HomeView")
       component: HomeView
     },
 

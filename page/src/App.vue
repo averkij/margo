@@ -8,25 +8,19 @@
     <!-- Left drawer menu -->
     <v-navigation-drawer app v-model="drawer" temporary>
       <v-list nav dense>
+        <div class="text-button pa-1">Contents</div>
         <v-list-item-group
           v-model="group"
           active-class="blue--text text--accent-4"
         >
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon>mdi-view-list-outline</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title @click.stop.prevent="openContents()"
-              >Contents</v-list-item-title
-            >
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon>mdi-github</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title @click.stop.prevent="goToGithub()"
-              >Github</v-list-item-title
-            >
+          <v-list-item
+            v-for="(n, i) in [...Array(PARTS_AMOUNT).keys()]"
+            :key="i"
+            link
+            @click="changePart(n + 1)"
+            class="ma-0 pa-0 pl-3"
+          >
+            {{ n + 1 }}
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -159,9 +153,8 @@
 </template>
 
 <script>
-import { LANGUAGES } from "@/common/language.helper";
-import { DEFAULT_FROM, DEFAULT_TO } from "@/common/language.helper";
-import { DEFAULT_PART } from "@/common/helper";
+import { LANGUAGES, DEFAULT_FROM, DEFAULT_TO } from "@/common/language.helper";
+import { DEFAULT_PART, PARTS_AMOUNT } from "@/common/helper";
 
 export default {
   name: "App",
@@ -170,6 +163,7 @@ export default {
   // },
   data: () => ({
     LANGUAGES,
+    PARTS_AMOUNT,
     drawer: false,
     group: null,
     tab: null,
@@ -177,6 +171,11 @@ export default {
   methods: {
     getFlagImgPath(code) {
       return new URL(`./assets/flags/flag-${code}-h.svg`, import.meta.url).href;
+    },
+    changePart(n) {
+      this.$router.push({
+        path: `/${n}/${this.langCodeFrom}/${this.langCodeTo}`,
+      });
     },
     changeLangFrom(code) {
       this.$router.push({
@@ -190,11 +189,6 @@ export default {
     },
     goToGithub() {
       window.open("https://github.com/averkij/a-studio", "_blank");
-    },
-    openContents() {
-      this.$router.push({
-        path: `/contents`,
-      });
     },
   },
   computed: {
@@ -214,9 +208,10 @@ export default {
     },
     currPart() {
       let part_id = this.$route.params.part;
-      if (part_id < 1 || part_id > this.maxPartId) {
+      if (part_id < 1 || part_id > PARTS_AMOUNT) {
         return DEFAULT_PART;
       }
+      console.log(part_id);
       return part_id;
     },
   },
