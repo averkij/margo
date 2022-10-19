@@ -32,7 +32,7 @@ p {
 } 
 
 span {
-  transition: 0.15s linear;
+  transition: background-color 0.15s linear;
 }
 
 /* .s0 {border-bottom: 2px solid #7cf39a;}
@@ -40,7 +40,7 @@ span {
 .s2 {border-bottom: 2px solid #7bbee7;}
 .s3 {border-bottom: 2px solid #f8ec65;} */
 
-.h { background-color: #fff9d5; cursor: pointer;}
+.h { background-color: #fff7ca; }
 
 /* @media (hover: hover) {
   a:hover {

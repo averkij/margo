@@ -15,12 +15,12 @@
 
 <script>
 import { defineComponent } from "vue";
-import { SettingsHelper } from "@/common/settings.helper";
 import { LANGUAGES, DEFAULT_FROM, DEFAULT_TO } from "@/common/language.helper";
 import { DEFAULT_PART, PARTS_AMOUNT } from "@/common/helper";
 
 // Components
 import ParagraphPair from "../components/ParagraphPair.vue";
+import { mapGetters } from "vuex";
 
 const data = import.meta.glob(`../assets/book/**`, {
   as: "raw",
@@ -42,15 +42,15 @@ export default defineComponent({
       leftData: {},
       rightData: {},
       items: [],
-      accSentCounter: [], //for correct sentence-level highlighting
-      fontSizeLeft: SettingsHelper.getFontSizeLeft(),
-      fontSizeRight: SettingsHelper.getFontSizeRight(),
+      accSentCounter: [], //for correct sentence-level highlighting,
     };
   },
   methods: {
     getFrom() {
       let path = `../assets/book/${this.langCodeFrom}/${this.currPart}.txt`;
       if (data[path]) {
+        console.log(data);
+        console.log(path);
         data[path]().then((resp_json) => {
           this.leftData = JSON.parse(resp_json);
           this.updateItems();
@@ -90,6 +90,7 @@ export default defineComponent({
     },
   },
   computed: {
+    ...mapGetters(["fontSizeLeft", "fontSizeRight"]),
     langCodeFrom() {
       let langCode = this.$route.params.from;
       if (this.LANGUAGES[langCode]) {

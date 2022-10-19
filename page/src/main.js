@@ -12,6 +12,7 @@ import {
 import 'vuetify/styles'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+import store from '@/store'
 
 // Styles
 import '@mdi/font/css/materialdesignicons.css'
@@ -27,4 +28,5 @@ const vuetify = createVuetify({
 createApp(App)
   .use(router)
   .use(vuetify)
+  .use(store)
   .mount('#app')

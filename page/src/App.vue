@@ -155,6 +155,10 @@
 <script>
 import { LANGUAGES, DEFAULT_FROM, DEFAULT_TO } from "@/common/language.helper";
 import { DEFAULT_PART, PARTS_AMOUNT } from "@/common/helper";
+import {
+  SET_FONT_SIZE_LEFT,
+  SET_FONT_SIZE_RIGHT,
+} from "@/store/mutations.type";
 
 export default {
   name: "App",
@@ -168,15 +172,7 @@ export default {
     fontSizeRight: "2",
     drawer: false,
   }),
-  mounted() {
-    // window.dispatchEvent(
-    //   new CustomEvent("localstorage-changed", {
-    //     detail: {
-    //       storage: this.getFontSizeLeft(),
-    //     },
-    //   })
-    // );
-  },
+  mounted() {},
   methods: {
     getFlagImgPath(code) {
       return new URL(`./assets/flags/flag-${code}-h.svg`, import.meta.url).href;
@@ -201,15 +197,27 @@ export default {
     },
     decreaseFontLeft() {
       localStorage.fontSizeLeft = "1";
+      this.$store.commit(SET_FONT_SIZE_LEFT, {
+        fontSizeLeft: "1",
+      });
     },
     increaseFontLeft() {
       localStorage.fontSizeLeft = "2";
+      this.$store.commit(SET_FONT_SIZE_LEFT, {
+        fontSizeLeft: "2",
+      });
     },
     decreaseFontRight() {
       localStorage.fontSizeRight = "1";
+      this.$store.commit(SET_FONT_SIZE_RIGHT, {
+        fontSizeRight: "1",
+      });
     },
     increaseFontRight() {
       localStorage.fontSizeRight = "2";
+      this.$store.commit(SET_FONT_SIZE_RIGHT, {
+        fontSizeRight: "2",
+      });
     },
   },
   computed: {
