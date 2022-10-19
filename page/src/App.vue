@@ -1,5 +1,5 @@
 
-  <style>
+<style>
 @import "./assets/main.css";
 </style>
 
@@ -109,14 +109,14 @@
           <v-container>
             <v-row class="px-lg-14 px-md-1">
               <v-col cols="6" class="text-left px-lg-6 px-md-4 px-sm-2 px-0">
-                <v-btn icon color="blue">
-                  <v-icon color="grey">
-                    mdi-format-font-size-increase
-                  </v-icon></v-btn
-                >
-                <v-btn icon color="blue">
+                <v-btn icon color="blue" @click="decreaseFontLeft()">
                   <v-icon color="grey">
                     mdi-format-font-size-decrease
+                  </v-icon></v-btn
+                >
+                <v-btn icon color="blue" @click="increaseFontLeft()">
+                  <v-icon color="grey">
+                    mdi-format-font-size-increase
                   </v-icon></v-btn
                 >
                 <v-btn icon color="blue">
@@ -126,12 +126,12 @@
               <v-col cols="6" class="text-left px-lg-6 px-md-0 px-sm-0 px-0">
                 <v-btn icon color="blue">
                   <v-icon color="grey">
-                    mdi-format-font-size-increase
+                    mdi-format-font-size-decrease
                   </v-icon></v-btn
                 >
                 <v-btn icon color="blue">
                   <v-icon color="grey">
-                    mdi-format-font-size-decrease
+                    mdi-format-font-size-increase
                   </v-icon></v-btn
                 >
                 <v-btn icon color="blue">
@@ -153,6 +153,7 @@
 </template>
 
 <script>
+import { SettingsHelper } from "@/common/settings.helper";
 import { LANGUAGES, DEFAULT_FROM, DEFAULT_TO } from "@/common/language.helper";
 import { DEFAULT_PART, PARTS_AMOUNT } from "@/common/helper";
 
@@ -164,10 +165,19 @@ export default {
   data: () => ({
     LANGUAGES,
     PARTS_AMOUNT,
+    fontSizeLeft: "1",
+    fontSizeRight: "2",
     drawer: false,
-    group: null,
-    tab: null,
   }),
+  mounted() {
+    // window.dispatchEvent(
+    //   new CustomEvent("localstorage-changed", {
+    //     detail: {
+    //       storage: this.getFontSizeLeft(),
+    //     },
+    //   })
+    // );
+  },
   methods: {
     getFlagImgPath(code) {
       return new URL(`./assets/flags/flag-${code}-h.svg`, import.meta.url).href;
@@ -189,6 +199,12 @@ export default {
     },
     goToGithub() {
       window.open("https://github.com/averkij/a-studio", "_blank");
+    },
+    decreaseFontLeft() {
+      localStorage.fontSizeLeft = "1";
+    },
+    increaseFontLeft() {
+      localStorage.fontSizeLeft = "2";
     },
   },
   computed: {
