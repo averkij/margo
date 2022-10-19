@@ -2,15 +2,21 @@
   <div>
     <!-- items -->
     <div v-for="(line, i) in items" :key="i">
-      <ParagraphPair :item="line" :num="accSentCounter[i]"> </ParagraphPair>
+      <ParagraphPair
+        :item="line"
+        :num="accSentCounter[i]"
+        :fontLeft="fontSizeLeft"
+        :fontRight="fontSizeRight"
+      >
+      </ParagraphPair>
     </div>
   </div>
 </template>
 
 <script>
 import { defineComponent } from "vue";
-import { LANGUAGES } from "@/common/language.helper";
-import { DEFAULT_FROM, DEFAULT_TO } from "@/common/language.helper";
+import { SettingsHelper } from "@/common/settings.helper";
+import { LANGUAGES, DEFAULT_FROM, DEFAULT_TO } from "@/common/language.helper";
 import { DEFAULT_PART, PARTS_AMOUNT } from "@/common/helper";
 
 // Components
@@ -37,6 +43,8 @@ export default defineComponent({
       rightData: {},
       items: [],
       accSentCounter: [], //for correct sentence-level highlighting
+      fontSizeLeft: SettingsHelper.getFontSizeLeft(),
+      fontSizeRight: SettingsHelper.getFontSizeRight(),
     };
   },
   methods: {

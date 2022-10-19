@@ -21,9 +21,8 @@ const router = createRouter({
     {
       path: '/:part/:from/:to',
       name: 'book',
-      component: HomeView
+      component: HomeView,
     },
-
   ]
 })
 

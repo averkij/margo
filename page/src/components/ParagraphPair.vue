@@ -6,6 +6,7 @@
         sm="6"
         justify="center"
         class="px-lg-8 px-md-4 px-sm-2 px-0"
+        :class="[{ fs: fontLeft == '1' }, { fl: fontLeft == '2' }]"
       >
         <Content
           @onHover="onHoverLeft"
@@ -21,6 +22,7 @@
         sm="6"
         justify="center"
         class="px-lg-8 px-md-2 px-sm-2 px-0"
+        :class="[{ fs: fontRight == '1' }, { fl: fontRight == '2' }]"
       >
         <Content
           @onHover="onHoverRight"
@@ -44,7 +46,7 @@ export default {
   components: {
     Content,
   },
-  props: ["item", "num"],
+  props: ["item", "num", "fontLeft", "fontRight"],
   data: () => ({
     highlightNumLeft: -1,
     highlightNumRight: -1,

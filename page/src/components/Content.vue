@@ -7,17 +7,21 @@
       <h2 class="mb-2">{{ data.c }}</h2>
     </div>
     <p v-else-if="data.t == 'text'">
-      <template v-for="(sent, i) in data.c" :key="i">
-        <v-hover v-slot="{ isHovering, props }" >
+      <span v-for="(sent, i) in data.c" :key="i">
+        <v-hover v-slot="{ isHovering, props }">
           <span
             @mouseover="onMouseOver(i)"
-            @mouseleave="onMouseLeave()" 
+            @mouseleave="onMouseLeave()"
             v-bind="props"
-            :class="['s' + ((num + i) % 4), { 'h': isHovering || i == highlightNum }]">
+            :class="[
+              's' + ((num + i) % 4),
+              { h: isHovering || i == highlightNum },
+            ]"
+          >
             {{ sent }}&nbsp;
           </span>
         </v-hover>
-      </template>
+      </span>
     </p>
     <div v-else></div>
   </div>
@@ -30,11 +34,11 @@ export default {
   data: () => ({}),
   methods: {
     onMouseOver(num) {
-      this.$emit('onHover', num)
+      this.$emit("onHover", num);
     },
     onMouseLeave() {
-      this.$emit('onLeave')
-    }
+      this.$emit("onLeave");
+    },
   },
 };
 </script>
