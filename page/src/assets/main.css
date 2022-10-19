@@ -13,6 +13,13 @@ p {
   text-indent: 20px;
 }
 
+.fs {
+  font-size: 0.9em;
+}
+.fl {
+  font-size: 1.1em;
+}
+
 /* .s0 {background: #cfefd7; color: "black"}
 .s1 {background: #fadce2; color: "black"}
 .s2 {background: #cce7eb; color: "black"}
