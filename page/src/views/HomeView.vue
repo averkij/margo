@@ -49,8 +49,6 @@ export default defineComponent({
     getFrom() {
       let path = `../assets/book/${this.langCodeFrom}/${this.currPart}.txt`;
       if (data[path]) {
-        console.log(data);
-        console.log(path);
         data[path]().then((resp_json) => {
           this.leftData = JSON.parse(resp_json);
           this.updateItems();

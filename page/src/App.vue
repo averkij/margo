@@ -109,33 +109,38 @@
           <v-container>
             <v-row class="px-lg-14 px-md-1">
               <v-col cols="6" class="text-left px-lg-6 px-md-4 px-sm-2 px-0">
-                <v-btn icon color="blue" @click="decreaseFontLeft()">
-                  <v-icon color="grey">
+                <v-btn icon @click="setFontSizeLeft(FONT_SIZE_SMALL)">
+                  <v-icon
+                    :color="iconFontDecreaseLeftIsActive ? 'blue' : 'grey'"
+                  >
                     mdi-format-font-size-decrease
                   </v-icon></v-btn
                 >
-                <v-btn icon color="blue" @click="increaseFontLeft()">
-                  <v-icon color="grey">
+                <v-btn icon @click="setFontSizeLeft(FONT_SIZE_LARGE)">
+                  <v-icon
+                    :color="iconFontIncreaseLeftIsActive ? 'blue' : 'grey'"
+                  >
                     mdi-format-font-size-increase
                   </v-icon></v-btn
                 >
-                <v-btn icon color="blue">
+                <!-- <v-btn icon color="blue">
                   <v-icon color="grey"> mdi-eye </v-icon></v-btn
-                >
+                > -->
               </v-col>
               <v-col cols="6" class="text-left px-lg-6 px-md-0 px-sm-0 px-0">
-                <v-btn icon color="blue" @click="decreaseFontRight()">
-                  <v-icon color="grey">
+                <v-btn icon @click="setFontSizeRight(FONT_SIZE_SMALL)">
+                  <v-icon
+                    :color="iconFontDecreaseRightIsActive ? 'blue' : 'grey'"
+                  >
                     mdi-format-font-size-decrease
                   </v-icon></v-btn
                 >
-                <v-btn icon color="blue" @click="increaseFontRight()">
-                  <v-icon color="grey">
+                <v-btn icon @click="setFontSizeRight(FONT_SIZE_LARGE)">
+                  <v-icon
+                    :color="iconFontIncreaseRightIsActive ? 'blue' : 'grey'"
+                  >
                     mdi-format-font-size-increase
                   </v-icon></v-btn
-                >
-                <v-btn icon color="blue">
-                  <v-icon color="grey"> mdi-eye </v-icon></v-btn
                 >
               </v-col>
             </v-row>
@@ -154,22 +159,27 @@
 
 <script>
 import { LANGUAGES, DEFAULT_FROM, DEFAULT_TO } from "@/common/language.helper";
-import { DEFAULT_PART, PARTS_AMOUNT } from "@/common/helper";
+import {
+  DEFAULT_PART,
+  PARTS_AMOUNT,
+  FONT_SIZE_NORMAL,
+  FONT_SIZE_SMALL,
+  FONT_SIZE_LARGE,
+} from "@/common/helper";
 import {
   SET_FONT_SIZE_LEFT,
   SET_FONT_SIZE_RIGHT,
 } from "@/store/mutations.type";
+import { mapGetters } from "vuex";
 
 export default {
   name: "App",
-  // components: {
-  //   Footer,
-  // },
   data: () => ({
     LANGUAGES,
     PARTS_AMOUNT,
-    fontSizeLeft: "1",
-    fontSizeRight: "2",
+    FONT_SIZE_NORMAL,
+    FONT_SIZE_SMALL,
+    FONT_SIZE_LARGE,
     drawer: false,
   }),
   mounted() {},
@@ -195,32 +205,35 @@ export default {
     goToGithub() {
       window.open("https://github.com/averkij/a-studio", "_blank");
     },
-    decreaseFontLeft() {
-      localStorage.fontSizeLeft = "1";
-      this.$store.commit(SET_FONT_SIZE_LEFT, {
-        fontSizeLeft: "1",
-      });
+    setFontSizeLeft(mode) {
+      if (this.fontSizeLeft == mode) {
+        localStorage.fontSizeLeft = FONT_SIZE_NORMAL;
+        this.$store.commit(SET_FONT_SIZE_LEFT, {
+          fontSizeLeft: FONT_SIZE_NORMAL,
+        });
+      } else {
+        localStorage.fontSizeLeft = mode;
+        this.$store.commit(SET_FONT_SIZE_LEFT, {
+          fontSizeLeft: mode,
+        });
+      }
     },
-    increaseFontLeft() {
-      localStorage.fontSizeLeft = "2";
-      this.$store.commit(SET_FONT_SIZE_LEFT, {
-        fontSizeLeft: "2",
-      });
-    },
-    decreaseFontRight() {
-      localStorage.fontSizeRight = "1";
-      this.$store.commit(SET_FONT_SIZE_RIGHT, {
-        fontSizeRight: "1",
-      });
-    },
-    increaseFontRight() {
-      localStorage.fontSizeRight = "2";
-      this.$store.commit(SET_FONT_SIZE_RIGHT, {
-        fontSizeRight: "2",
-      });
+    setFontSizeRight(mode) {
+      if (this.fontSizeRight == mode) {
+        localStorage.fontSizeRight = FONT_SIZE_NORMAL;
+        this.$store.commit(SET_FONT_SIZE_RIGHT, {
+          fontSizeLeft: FONT_SIZE_NORMAL,
+        });
+      } else {
+        localStorage.fontSizeRight = mode;
+        this.$store.commit(SET_FONT_SIZE_RIGHT, {
+          fontSizeRight: mode,
+        });
+      }
     },
   },
   computed: {
+    ...mapGetters(["fontSizeLeft", "fontSizeRight"]),
     langCodeFrom() {
       let langCode = this.$route.params.from;
       if (this.LANGUAGES[langCode]) {
@@ -240,8 +253,19 @@ export default {
       if (part_id < 1 || part_id > PARTS_AMOUNT) {
         return DEFAULT_PART;
       }
-      console.log(part_id);
       return part_id;
+    },
+    iconFontDecreaseLeftIsActive() {
+      return this.fontSizeLeft == "1";
+    },
+    iconFontIncreaseLeftIsActive() {
+      return this.fontSizeLeft == "2";
+    },
+    iconFontDecreaseRightIsActive() {
+      return this.fontSizeRight == "1";
+    },
+    iconFontIncreaseRightIsActive() {
+      return this.fontSizeRight == "2";
     },
   },
 };
