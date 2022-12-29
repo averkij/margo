@@ -7,6 +7,7 @@
         :num="accSentCounter[i]"
         :fontLeft="fontSizeLeft"
         :fontRight="fontSizeRight"
+        :mode="layoutMode"
       >
       </ParagraphPair>
     </div>
@@ -88,7 +89,7 @@ export default defineComponent({
     },
   },
   computed: {
-    ...mapGetters(["fontSizeLeft", "fontSizeRight"]),
+    ...mapGetters(["fontSizeLeft", "fontSizeRight", "layoutMode"]),
     langCodeFrom() {
       let langCode = this.$route.params.from;
       if (this.LANGUAGES[langCode]) {

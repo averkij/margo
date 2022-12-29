@@ -2,35 +2,79 @@
   <div v-if="data">
     <div v-if="data.t == 'h1'">
       <h1 class="mb-4">{{ data.c }}</h1>
+      <h1 v-if="mode == '2'" class="mb-4">{{ data2.c }}</h1>
     </div>
     <div v-else-if="data.t == 'h2'">
       <h2 class="mb-2">{{ data.c }}</h2>
+      <h2 v-if="mode == '2'" class="mb-2">{{ data2.c }}</h2>
     </div>
     <p v-else-if="data.t == 'text'">
-      <span v-for="(sent, i) in data.c" :key="i">
-        <v-hover v-slot="{ isHovering, props }">
-          <span
-            @mouseover="onMouseOver(i)"
-            @mouseleave="onMouseLeave()"
-            v-bind="props"
-            :class="[
-              's' + ((num + i) % 4),
-              { h: isHovering || i == highlightNum },
-            ]"
-          >
-            {{ sent }}&nbsp;
+      <div>
+        <div v-if="mode == '2'">
+          <span v-for="(sent, i) in zip(data.c, data2.c)" :key="i">
+            <v-hover v-slot="{ isHovering, props }">
+              <span
+                @mouseover="onMouseOver(i)"
+                @mouseleave="onMouseLeave()"
+                v-bind="props"
+                :class="[
+                  's' + ((num + i) % 4),
+                  { h: isHovering || i == highlightNum },
+                  { fs: fontLeft == '1' },
+                  { fl: fontLeft == '2' }
+                ]"
+              >
+                {{ sent[0] }}&nbsp;
+              </span><span
+                @mouseover="onMouseOver(i)"
+                @mouseleave="onMouseLeave()"
+                v-bind="props"
+                :class="[
+                  's' + ((num + i) % 4),
+                  { h: isHovering || i == highlightNum },
+                  { fs: fontRight == '1' },
+                  { fl: fontRight == '2' }
+                ]"
+              >
+                {{ sent[1] }}&nbsp;
+              </span>
+            </v-hover>
           </span>
-        </v-hover>
-      </span>
+        </div>
+        <div v-else>
+          <span v-for="(sent, i) in data.c" :key="i">
+            <v-hover v-slot="{ isHovering, props }">
+              <span
+                @mouseover="onMouseOver(i)"
+                @mouseleave="onMouseLeave()"
+                v-bind="props"
+                :class="[
+                  's' + ((num + i) % 4),
+                  { h: isHovering || i == highlightNum },
+                ]"
+              >
+                {{ sent }}&nbsp;
+              </span>
+            </v-hover>
+          </span>
+        </div>
+      </div>
     </p>
-    <div v-else></div>
   </div>
 </template>
 
 <script>
 export default {
   name: "Content",
-  props: ["data", "num", "highlightNum"],
+  props: [
+    "data",
+    "data2",
+    "num",
+    "highlightNum",
+    "mode",
+    "fontLeft",
+    "fontRight",
+  ],
   data: () => ({}),
   methods: {
     onMouseOver(num) {
@@ -38,6 +82,9 @@ export default {
     },
     onMouseLeave() {
       this.$emit("onLeave");
+    },
+    zip(a, b) {
+      return a.map((k, i) => [k, b[i]]);
     },
   },
 };
