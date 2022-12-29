@@ -4,7 +4,8 @@ import {
 
 import {
     SET_FONT_SIZE_LEFT,
-    SET_FONT_SIZE_RIGHT
+    SET_FONT_SIZE_RIGHT,
+    SET_LAYOUT_MODE
 } from "./mutations.type"
 
 import {
@@ -14,6 +15,7 @@ import {
 const initialState = {
     fontSizeLeft: SettingsHelper.getFontSizeLeft(),
     fontSizeRight: SettingsHelper.getFontSizeRight(),
+    layoutMode: SettingsHelper.getLayoutMode(),
 }
 
 export default createStore({
@@ -27,6 +29,9 @@ export default createStore({
         [SET_FONT_SIZE_RIGHT](state, params) {
             state.fontSizeRight = params.fontSizeRight;
         },
+        [SET_LAYOUT_MODE](state, params) {
+            state.layoutMode = params.layoutMode;
+        },
     },
     getters: {
         fontSizeLeft(state) {
@@ -34,6 +39,9 @@ export default createStore({
         },
         fontSizeRight(state) {
             return state.fontSizeRight;
+        },
+        layoutMode(state) {
+            return state.layoutMode;
         }
     }
 })
