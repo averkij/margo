@@ -142,6 +142,18 @@
                     mdi-format-font-size-increase
                   </v-icon></v-btn
                 >
+                <span class="text-overline pink lighten-5 ml-5">Layout</span>
+                <v-btn icon color="blue" @click="changeMode()">
+                  <v-icon v-if="layoutMode == '0'" color="grey">
+                    mdi-numeric-1-circle
+                  </v-icon>
+                  <v-icon v-if="layoutMode == '1'" color="grey">
+                    mdi-numeric-2-circle
+                  </v-icon>
+                  <v-icon v-if="layoutMode == '2'" color="grey">
+                    mdi-numeric-3-circle
+                  </v-icon>
+                </v-btn>
               </v-col>
             </v-row>
           </v-container>
@@ -169,6 +181,7 @@ import {
 import {
   SET_FONT_SIZE_LEFT,
   SET_FONT_SIZE_RIGHT,
+  SET_LAYOUT_MODE,
 } from "@/store/mutations.type";
 import { mapGetters } from "vuex";
 
@@ -231,9 +244,17 @@ export default {
         });
       }
     },
+    changeMode() {
+      let layoutMode = this.layoutMode;
+      layoutMode = (layoutMode + 1) % 3;
+      localStorage.layoutMode = layoutMode;
+      this.$store.commit(SET_LAYOUT_MODE, {
+        layoutMode: layoutMode,
+      });
+    },
   },
   computed: {
-    ...mapGetters(["fontSizeLeft", "fontSizeRight"]),
+    ...mapGetters(["fontSizeLeft", "fontSizeRight", "layoutMode"]),
     langCodeFrom() {
       let langCode = this.$route.params.from;
       if (this.LANGUAGES[langCode]) {
