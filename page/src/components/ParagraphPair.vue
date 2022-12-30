@@ -23,6 +23,7 @@
           :fontLeft="fontLeft"
           :fontRight="fontRight"
           :showTextRight="showTextRight"
+          :colorPrompt="colorPrompt"
         >
         </Content>
         <Content
@@ -34,6 +35,7 @@
           :num="num"
           :class="[{ fs: fontRight == '1' }, { fl: fontRight == '2' }]"
           :mode="mode"
+          :colorPrompt="colorPrompt"
         >
         </Content>
       </v-col>
@@ -52,6 +54,7 @@
           :data="item[1]"
           :num="num"
           :highlightNum="highlightNumRight"
+          :colorPrompt="colorPrompt"
         >
         </Content>
       </v-col>
@@ -76,6 +79,7 @@ export default {
     "mode",
     "showTextLeft",
     "showTextRight",
+    "colorPrompt",
   ],
   data: () => ({
     highlightNumLeft: -1,

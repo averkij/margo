@@ -8,6 +8,9 @@ export const SettingsHelper = {
     getLayoutMode() {
         return localStorage.layoutMode ? localStorage.layoutMode : defaultClientSettings.layoutMode;
     },
+    getColorPrompt() {
+        return localStorage.colorPrompt ? localStorage.colorPrompt : defaultClientSettings.colorPrompt;
+    },
     getShowTextLeft() {
         return localStorage.showTextLeft ? localStorage.showTextLeft : defaultClientSettings.showTextLeft;
     },
@@ -20,6 +23,7 @@ const defaultClientSettings = {
     fontSizeLeft: '0',
     fontSizeRight: '0',
     layoutMode: '0',
+    colorPrompt: '0',
     showTextLeft: '0',
     showTextRight: '0'
 }

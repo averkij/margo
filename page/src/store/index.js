@@ -8,6 +8,7 @@ import {
     SET_LAYOUT_MODE,
     SET_SHOW_TEXT_LEFT,
     SET_SHOW_TEXT_RIGHT,
+    SET_COLOR_PROMPT,
 } from "./mutations.type"
 
 import {
@@ -18,6 +19,7 @@ const initialState = {
     fontSizeLeft: SettingsHelper.getFontSizeLeft(),
     fontSizeRight: SettingsHelper.getFontSizeRight(),
     layoutMode: SettingsHelper.getLayoutMode(),
+    colorPrompt: SettingsHelper.getColorPrompt(),
     showTextLeft: SettingsHelper.getShowTextLeft(),
     showTextRight: SettingsHelper.getShowTextRight(),
 }
@@ -36,6 +38,9 @@ export default createStore({
         [SET_LAYOUT_MODE](state, params) {
             state.layoutMode = params.layoutMode;
         },
+        [SET_COLOR_PROMPT](state, params) {
+            state.colorPrompt = params.colorPrompt;
+        },
         [SET_SHOW_TEXT_LEFT](state, params) {
             state.showTextLeft = params.showTextLeft;
         },
@@ -52,6 +57,9 @@ export default createStore({
         },
         layoutMode(state) {
             return state.layoutMode;
+        },
+        colorPrompt(state) {
+            return state.colorPrompt;
         },
         showTextLeft(state) {
             return state.showTextLeft;

@@ -10,6 +10,7 @@
         :mode="layoutMode"
         :showTextLeft="showTextLeft"
         :showTextRight="showTextRight"
+        :colorPrompt="colorPrompt"
       >
       </ParagraphPair>
     </div>
@@ -95,6 +96,7 @@ export default defineComponent({
       "fontSizeLeft",
       "fontSizeRight",
       "layoutMode",
+      "colorPrompt",
       "showTextLeft",
       "showTextRight",
     ]),

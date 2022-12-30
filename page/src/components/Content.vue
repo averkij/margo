@@ -44,7 +44,7 @@
                 @mouseleave="onMouseLeave()"
                 v-bind="props"
                 :class="[
-                  's' + ((num + i) % 4),
+                  colorPrompt == '1' ? `u${((num + i) % 4)}` : colorPrompt == '2' ? `s${((num + i) % 4)}` : '',
                   { h: isHovering || i == highlightNum },
                   { fs: fontLeft == '1' },
                   { fl: fontLeft == '2' }
@@ -57,8 +57,7 @@
                 @mouseover="onMouseOver(i)"
                 @mouseleave="onMouseLeave()"
                 v-bind="props"
-                :class="[
-                  's' + ((num + i) % 4),
+                :class="[ colorPrompt == '1' ? `u${((num + i) % 4)}` : colorPrompt == '2' ? `s${((num + i) % 4)}` : '',
                   { h: isHovering || i == highlightNum },
                   { fs: fontRight == '1' },
                   { fl: fontRight == '2' }
@@ -77,7 +76,7 @@
                 @mouseleave="onMouseLeave()"
                 v-bind="props"
                 :class="[
-                  's' + ((num + i) % 4),
+                  colorPrompt == '1' ? `u${((num + i) % 4)}` : colorPrompt == '2' ? `s${((num + i) % 4)}` : '',
                   { h: isHovering || i == highlightNum },
                 ]"
               >
@@ -103,6 +102,7 @@ export default {
     "fontLeft",
     "fontRight",
     "showTextRight",
+    "colorPrompt",
   ],
   data: () => ({}),
   methods: {

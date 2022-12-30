@@ -138,14 +138,14 @@
                 <span class="text-overline text-grey lighten-5 ml-5"
                   >Prompt</span
                 >
-                <v-btn icon color="blue" @click="changeMode()">
-                  <v-icon v-if="layoutMode == '0'" color="green">
+                <v-btn icon color="blue" @click="changeColorPrompt()">
+                  <v-icon v-if="colorPrompt == '0'">
                     mdi-numeric-1-circle
                   </v-icon>
-                  <v-icon v-else-if="layoutMode == '1'" color="orange">
+                  <v-icon v-else-if="colorPrompt == '1'">
                     mdi-numeric-2-circle
                   </v-icon>
-                  <v-icon v-else-if="layoutMode == '2'" color="blue">
+                  <v-icon v-else-if="colorPrompt == '2'">
                     mdi-numeric-3-circle
                   </v-icon>
                 </v-btn>
@@ -181,7 +181,7 @@
                 <span class="text-overline text-grey lighten-5 ml-5"
                   >Layout</span
                 >
-                <v-btn icon @click="changeMode()" color="green">
+                <v-btn icon @click="changeLayoutMode()" color="green">
                   <v-icon v-if="layoutMode == '0'">
                     mdi-numeric-1-circle
                   </v-icon>
@@ -220,6 +220,7 @@ import {
   SET_FONT_SIZE_LEFT,
   SET_FONT_SIZE_RIGHT,
   SET_LAYOUT_MODE,
+  SET_COLOR_PROMPT,
   SET_SHOW_TEXT_LEFT,
   SET_SHOW_TEXT_RIGHT,
 } from "@/store/mutations.type";
@@ -284,12 +285,20 @@ export default {
         });
       }
     },
-    changeMode() {
+    changeLayoutMode() {
       let layoutMode = this.layoutMode;
       layoutMode = (layoutMode + 1) % 3;
       localStorage.layoutMode = layoutMode;
       this.$store.commit(SET_LAYOUT_MODE, {
         layoutMode: layoutMode,
+      });
+    },
+    changeColorPrompt() {
+      let colorPrompt = this.colorPrompt;
+      colorPrompt = (colorPrompt + 1) % 3;
+      localStorage.colorPrompt = colorPrompt;
+      this.$store.commit(SET_COLOR_PROMPT, {
+        colorPrompt: colorPrompt,
       });
     },
     toggleLeftText() {
@@ -314,6 +323,7 @@ export default {
       "fontSizeLeft",
       "fontSizeRight",
       "layoutMode",
+      "colorPrompt",
       "showTextLeft",
       "showTextRight",
     ]),
