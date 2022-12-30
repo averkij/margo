@@ -8,6 +8,8 @@
         :fontLeft="fontSizeLeft"
         :fontRight="fontSizeRight"
         :mode="layoutMode"
+        :showTextLeft="showTextLeft"
+        :showTextRight="showTextRight"
       >
       </ParagraphPair>
     </div>
@@ -89,7 +91,13 @@ export default defineComponent({
     },
   },
   computed: {
-    ...mapGetters(["fontSizeLeft", "fontSizeRight", "layoutMode"]),
+    ...mapGetters([
+      "fontSizeLeft",
+      "fontSizeRight",
+      "layoutMode",
+      "showTextLeft",
+      "showTextRight",
+    ]),
     langCodeFrom() {
       let langCode = this.$route.params.from;
       if (this.LANGUAGES[langCode]) {

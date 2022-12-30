@@ -8,6 +8,7 @@
         class="px-lg-8 px-md-4 px-sm-2 px-0"
       >
         <Content
+          v-if="mode == '0' || mode == '1' || mode == '2'"
           @onHover="onHoverLeft"
           @onLeave="onLeaveLeft"
           :highlightNum="highlightNumLeft"
@@ -21,10 +22,11 @@
           ]"
           :fontLeft="fontLeft"
           :fontRight="fontRight"
+          :showTextRight="showTextRight"
         >
         </Content>
         <Content
-          v-if="mode == '1'"
+          v-if="mode == '1' && showTextRight == '1'"
           @onHover="onHoverRight"
           @onLeave="onLeaveRight"
           :highlightNum="highlightNumRight"
@@ -36,7 +38,7 @@
         </Content>
       </v-col>
       <v-col
-        v-if="mode == '0'"
+        v-if="mode == '0' && showTextRight == '1'"
         cols="12"
         sm="6"
         justify="center"
@@ -66,7 +68,15 @@ export default {
   components: {
     Content,
   },
-  props: ["item", "num", "fontLeft", "fontRight", "mode"],
+  props: [
+    "item",
+    "num",
+    "fontLeft",
+    "fontRight",
+    "mode",
+    "showTextLeft",
+    "showTextRight",
+  ],
   data: () => ({
     highlightNumLeft: -1,
     highlightNumRight: -1,

@@ -1,12 +1,38 @@
 <template>
   <div v-if="data">
     <div v-if="data.t == 'h1'">
-      <h1 class="mb-4">{{ data.c }}</h1>
-      <h1 v-if="mode == '2'" class="mb-4">{{ data2.c }}</h1>
+      <div v-if="mode == '2'">
+        <div :class="[{ fs: fontLeft == '1' }, { fl: fontLeft == '2' }]">
+          <h1 class="mb-4">
+            {{ data.c }}
+          </h1>
+        </div>
+        <div :class="[{ fs: fontRight == '1' }, { fl: fontRight == '2' }]">
+          <h1 v-if="showTextRight == '1'" class="mb-4">
+            {{ data2.c }}
+          </h1>
+        </div>
+      </div>
+      <div v-else>
+        <h1 class="mb-4">{{ data.c }}</h1>
+      </div>
     </div>
     <div v-else-if="data.t == 'h2'">
-      <h2 class="mb-2">{{ data.c }}</h2>
-      <h2 v-if="mode == '2'" class="mb-2">{{ data2.c }}</h2>
+      <div v-if="mode == '2'">
+        <div :class="[{ fs: fontLeft == '1' }, { fl: fontLeft == '2' }]">
+          <h2 class="mb-4">
+            {{ data.c }}
+          </h2>
+        </div>
+        <div :class="[{ fs: fontRight == '1' }, { fl: fontRight == '2' }]">
+          <h2 v-if="showTextRight == '1'" class="mb-4">
+            {{ data2.c }}
+          </h2>
+        </div>
+      </div>
+      <div v-else>
+        <h2 class="mb-4">{{ data.c }}</h2>
+      </div>
     </div>
     <p v-else-if="data.t == 'text'">
       <div>
@@ -25,7 +51,9 @@
                 ]"
               >
                 {{ sent[0] }}&nbsp;
-              </span><span
+              </span>
+              <span
+                v-if="showTextRight=='1'"
                 @mouseover="onMouseOver(i)"
                 @mouseleave="onMouseLeave()"
                 v-bind="props"
@@ -74,6 +102,7 @@ export default {
     "mode",
     "fontLeft",
     "fontRight",
+    "showTextRight",
   ],
   data: () => ({}),
   methods: {

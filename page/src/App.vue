@@ -123,11 +123,35 @@
                     mdi-format-font-size-increase
                   </v-icon></v-btn
                 >
-                <!-- <v-btn icon color="blue">
-                  <v-icon color="grey"> mdi-eye </v-icon></v-btn
-                > -->
+
+                <!-- LEFT TEXT VISIBILITY -->
+                <!-- <v-btn icon @click="toggleLeftText()">
+                  <v-icon v-if="showTextLeft == '0'" color="grey">
+                    mdi-eye-off-outline
+                  </v-icon>
+                  <v-icon v-else-if="showTextLeft == '1'" color="grey">
+                    mdi-eye-outline
+                  </v-icon>
+                </v-btn> -->
+
+                <!-- HIGHLIGHTING -->
+                <span class="text-overline text-grey lighten-5 ml-5"
+                  >Prompt</span
+                >
+                <v-btn icon color="blue" @click="changeMode()">
+                  <v-icon v-if="layoutMode == '0'" color="green">
+                    mdi-numeric-1-circle
+                  </v-icon>
+                  <v-icon v-else-if="layoutMode == '1'" color="orange">
+                    mdi-numeric-2-circle
+                  </v-icon>
+                  <v-icon v-else-if="layoutMode == '2'" color="blue">
+                    mdi-numeric-3-circle
+                  </v-icon>
+                </v-btn>
               </v-col>
               <v-col cols="6" class="text-left px-lg-6 px-md-0 px-sm-0 px-0">
+                <!-- RIGHT TEXT FONT SIZE -->
                 <v-btn icon @click="setFontSizeRight(FONT_SIZE_SMALL)">
                   <v-icon
                     :color="iconFontDecreaseRightIsActive ? 'blue' : 'grey'"
@@ -142,15 +166,29 @@
                     mdi-format-font-size-increase
                   </v-icon></v-btn
                 >
-                <span class="text-overline pink lighten-5 ml-5">Layout</span>
-                <v-btn icon color="blue" @click="changeMode()">
-                  <v-icon v-if="layoutMode == '0'" color="grey">
+
+                <!-- RIGHT TEXT VISIBILITY -->
+                <v-btn icon @click="toggleRightText()">
+                  <v-icon v-if="showTextRight == '0'" color="grey">
+                    mdi-eye-off-outline
+                  </v-icon>
+                  <v-icon v-else-if="showTextRight == '1'" color="grey">
+                    mdi-eye-outline
+                  </v-icon>
+                </v-btn>
+
+                <!-- LAYOUT MODE -->
+                <span class="text-overline text-grey lighten-5 ml-5"
+                  >Layout</span
+                >
+                <v-btn icon @click="changeMode()" color="green">
+                  <v-icon v-if="layoutMode == '0'">
                     mdi-numeric-1-circle
                   </v-icon>
-                  <v-icon v-if="layoutMode == '1'" color="grey">
+                  <v-icon v-if="layoutMode == '1'">
                     mdi-numeric-2-circle
                   </v-icon>
-                  <v-icon v-if="layoutMode == '2'" color="grey">
+                  <v-icon v-if="layoutMode == '2'">
                     mdi-numeric-3-circle
                   </v-icon>
                 </v-btn>
@@ -182,6 +220,8 @@ import {
   SET_FONT_SIZE_LEFT,
   SET_FONT_SIZE_RIGHT,
   SET_LAYOUT_MODE,
+  SET_SHOW_TEXT_LEFT,
+  SET_SHOW_TEXT_RIGHT,
 } from "@/store/mutations.type";
 import { mapGetters } from "vuex";
 
@@ -252,9 +292,31 @@ export default {
         layoutMode: layoutMode,
       });
     },
+    toggleLeftText() {
+      let showTextLeft = Number(this.showTextLeft);
+      showTextLeft = ((showTextLeft + 1) % 2).toString();
+      localStorage.showTextLeft = showTextLeft;
+      this.$store.commit(SET_SHOW_TEXT_LEFT, {
+        showTextLeft: showTextLeft,
+      });
+    },
+    toggleRightText() {
+      let showTextRight = Number(this.showTextRight);
+      showTextRight = ((showTextRight + 1) % 2).toString();
+      localStorage.showTextRight = showTextRight;
+      this.$store.commit(SET_SHOW_TEXT_RIGHT, {
+        showTextRight: showTextRight,
+      });
+    },
   },
   computed: {
-    ...mapGetters(["fontSizeLeft", "fontSizeRight", "layoutMode"]),
+    ...mapGetters([
+      "fontSizeLeft",
+      "fontSizeRight",
+      "layoutMode",
+      "showTextLeft",
+      "showTextRight",
+    ]),
     langCodeFrom() {
       let langCode = this.$route.params.from;
       if (this.LANGUAGES[langCode]) {

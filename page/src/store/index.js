@@ -5,7 +5,9 @@ import {
 import {
     SET_FONT_SIZE_LEFT,
     SET_FONT_SIZE_RIGHT,
-    SET_LAYOUT_MODE
+    SET_LAYOUT_MODE,
+    SET_SHOW_TEXT_LEFT,
+    SET_SHOW_TEXT_RIGHT,
 } from "./mutations.type"
 
 import {
@@ -16,6 +18,8 @@ const initialState = {
     fontSizeLeft: SettingsHelper.getFontSizeLeft(),
     fontSizeRight: SettingsHelper.getFontSizeRight(),
     layoutMode: SettingsHelper.getLayoutMode(),
+    showTextLeft: SettingsHelper.getShowTextLeft(),
+    showTextRight: SettingsHelper.getShowTextRight(),
 }
 
 export default createStore({
@@ -32,6 +36,12 @@ export default createStore({
         [SET_LAYOUT_MODE](state, params) {
             state.layoutMode = params.layoutMode;
         },
+        [SET_SHOW_TEXT_LEFT](state, params) {
+            state.showTextLeft = params.showTextLeft;
+        },
+        [SET_SHOW_TEXT_RIGHT](state, params) {
+            state.showTextRight = params.showTextRight;
+        },
     },
     getters: {
         fontSizeLeft(state) {
@@ -42,6 +52,12 @@ export default createStore({
         },
         layoutMode(state) {
             return state.layoutMode;
-        }
+        },
+        showTextLeft(state) {
+            return state.showTextLeft;
+        },
+        showTextRight(state) {
+            return state.showTextRight;
+        },
     }
 })
