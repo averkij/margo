@@ -10,7 +10,7 @@
     </div>
     <p v-else-if="data.t == 'text'">
       <div>
-        <div v-if="mode == '2'">
+        <div v-if="mode == '2' && data && data2" >
           <span v-for="(sent, i) in zip(data.c, data2.c)" :key="i">
             <v-hover v-slot="{ isHovering, props }">
               <span
