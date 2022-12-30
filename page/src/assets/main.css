@@ -20,10 +20,10 @@ p {
   font-size: 1.5em;
 }
 
-/* .s0 {background: #cfefd7; color: "black"}
+.s0 {background: #cfefd7; color: "black"}
 .s1 {background: #fadce2; color: "black"}
 .s2 {background: #cce7eb; color: "black"}
-.s3 {background: #fefbd6; color: "black"} */
+.s3 {background: #fefbd6; color: "black"}
 
 .my-toolbar {
   font-weight: bold;
@@ -35,10 +35,10 @@ span {
   transition: background-color 0.15s linear;
 }
 
-/* .s0 {border-bottom: 2px solid #7cf39a;}
-.s1 {border-bottom: 2px solid #d7554c;}
-.s2 {border-bottom: 2px solid #7bbee7;}
-.s3 {border-bottom: 2px solid #f8ec65;} */
+.u0 {border-bottom: 2px solid #77de91;}
+.u1 {border-bottom: 2px solid #d7554c;}
+.u2 {border-bottom: 2px solid #7bbee7;}
+.u3 {border-bottom: 2px solid #fff481;}
 
 .h { background-color: #fff7ca; }
 
