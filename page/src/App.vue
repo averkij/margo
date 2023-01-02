@@ -135,7 +135,13 @@
                 </v-btn> -->
 
                 <!-- HIGHLIGHTING -->
-                <span class="text-overline text-grey lighten-5 ml-5"
+                <span
+                  class="
+                    text-overline text-grey
+                    lighten-5
+                    ml-5
+                    d-none d-sm-inline
+                  "
                   >Prompt</span
                 >
                 <v-btn icon color="blue" @click="changeColorPrompt()">
@@ -178,7 +184,13 @@
                 </v-btn>
 
                 <!-- LAYOUT MODE -->
-                <span class="text-overline text-grey lighten-5 ml-5"
+                <span
+                  class="
+                    text-overline text-grey
+                    lighten-5
+                    ml-5
+                    d-none d-sm-inline
+                  "
                   >Layout</span
                 >
                 <v-btn icon @click="changeLayoutMode()" color="green">
