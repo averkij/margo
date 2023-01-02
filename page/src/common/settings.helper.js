@@ -23,7 +23,7 @@ const defaultClientSettings = {
     fontSizeLeft: '0',
     fontSizeRight: '0',
     layoutMode: '0',
-    colorPrompt: '0',
+    colorPrompt: '2',
     showTextLeft: '0',
-    showTextRight: '0'
+    showTextRight: '1'
 }
