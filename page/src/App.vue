@@ -261,7 +261,6 @@ export default {
       console.log(assets);
       if (assets[path]) {
         assets[path]().then((resp_json) => {
-          print(resp_json);
           this.contents = JSON.parse(resp_json);
         });
       }
