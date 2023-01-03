@@ -20,7 +20,7 @@
             @click="changePart(n + 1)"
             class="ma-0 pa-0 pl-3"
           >
-            {{ n + 1 }}
+            {{ contents[langCodeFrom][n] }}
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -237,6 +237,11 @@ import {
   SET_SHOW_TEXT_RIGHT,
 } from "@/store/mutations.type";
 import { mapGetters } from "vuex";
+import { LanguageHelper } from "./common/language.helper";
+
+const assets = import.meta.glob(`./assets/info/**`, {
+  as: "raw",
+});
 
 export default {
   name: "App",
@@ -247,9 +252,20 @@ export default {
     FONT_SIZE_SMALL,
     FONT_SIZE_LARGE,
     drawer: false,
+    contents: LanguageHelper.initContents(),
   }),
   mounted() {},
   methods: {
+    getContents() {
+      let path = `./assets/info/contents.json`;
+      console.log(assets);
+      if (assets[path]) {
+        assets[path]().then((resp_json) => {
+          print(resp_json);
+          this.contents = JSON.parse(resp_json);
+        });
+      }
+    },
     getFlagImgPath(code) {
       return new URL(`./assets/flags/flag-${code}-h.svg`, import.meta.url).href;
     },
@@ -372,6 +388,9 @@ export default {
     iconFontIncreaseRightIsActive() {
       return this.fontSizeRight == "2";
     },
+  },
+  mounted() {
+    this.getContents();
   },
 };
 </script>
