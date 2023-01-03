@@ -1,3 +1,7 @@
+import {
+    PARTS_AMOUNT,
+} from "@/common/helper";
+
 export const LANGUAGES = {
     'ru': {
         langCode: "ru",
@@ -95,6 +99,13 @@ export const LanguageHelper = {
         let res = {}
         Object.keys(LANGUAGES).forEach(x => {
             res[x] = [];
+        })
+        return res;
+    },
+    initContents() {
+        let res = {}
+        Object.keys(LANGUAGES).forEach(x => {
+            res[x] = [...Array(PARTS_AMOUNT).keys()];
         })
         return res;
     },
