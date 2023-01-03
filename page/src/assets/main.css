@@ -42,6 +42,22 @@ span {
 
 .h { background-color: #fff7ca; }
 
+.pp:hover > .book-par-id {
+  opacity: 1;
+}
+
+.book-par-id {
+  position: absolute;
+  left: -20px;
+  top: 0;
+  font-size: 12px;
+  opacity: 0;
+  font-weight: 600;
+  text-align: left;
+  display: inline-block;
+  color: #ddd;
+}
+
 /* @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
