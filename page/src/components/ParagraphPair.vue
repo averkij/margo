@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row v-if="imageExists(item)">
+    <v-row v-if="imageExists(item)" class="d-none d-sm-flex">
       <v-col
         cols="12"
         sm="12"
@@ -22,8 +22,26 @@
             ></v-img>
           </li>
         </ul>
-
-        <!-- <div class="fill-height repeating-gradient"></div> -->
+      </v-col>
+    </v-row>
+    <v-row v-if="imageExists(item)" class="d-flex d-sm-none">
+      <v-col
+        cols="12"
+        sm="12"
+        class="
+          px-lg-8 px-md-4 px-sm-2 px-0
+          d-flex
+          justify-center
+          pa-5
+          mb-8
+          mt-2
+        "
+      >
+        <v-img
+          max-width="512"
+          :src="getImgPath(item)"
+          class="img-frame"
+        ></v-img>
       </v-col>
     </v-row>
     <v-row justify="center" class="px-lg-12 px-md-0 pp" no-gutters>
