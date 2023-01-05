@@ -1,6 +1,21 @@
 <template>
   <div>
     <!-- items -->
+    <div v-if="SHOW_TITLE">
+      <div v-for="(line, i) in head" :key="i">
+        <ParagraphPair
+          :item="line"
+          :num="accSentCounter[i]"
+          :fontLeft="fontSizeLeft"
+          :fontRight="fontSizeRight"
+          :mode="layoutMode"
+          :showTextLeft="showTextLeft"
+          :showTextRight="showTextRight"
+          :colorPrompt="colorPrompt"
+        >
+        </ParagraphPair>
+      </div>
+    </div>
     <div v-for="(line, i) in items" :key="i">
       <ParagraphPair
         :item="line"
@@ -20,7 +35,7 @@
 <script>
 import { defineComponent } from "vue";
 import { LANGUAGES, DEFAULT_FROM, DEFAULT_TO } from "@/common/language.helper";
-import { DEFAULT_PART, PARTS_AMOUNT } from "@/common/helper";
+import { DEFAULT_PART, PARTS_AMOUNT, SHOW_TITLE } from "@/common/helper";
 
 // Components
 import ParagraphPair from "../components/ParagraphPair.vue";
@@ -43,9 +58,11 @@ export default defineComponent({
       DEFAULT_TO,
       DEFAULT_PART,
       PARTS_AMOUNT,
+      SHOW_TITLE,
       leftData: {},
       rightData: {},
       items: [],
+      head: [],
       accSentCounter: [], //for correct sentence-level highlighting,
     };
   },
@@ -77,6 +94,7 @@ export default defineComponent({
         this.calcSentCounter(this.leftData["body"]);
       }
       this.items = zip(this.leftData["body"], this.rightData["body"]);
+      this.head = zip(this.leftData["head"], this.rightData["head"]);
     },
     calcSentCounter(paragraphs) {
       let c = 0;
