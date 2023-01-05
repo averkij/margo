@@ -90,7 +90,10 @@ export default defineComponent({
       this.getTo(this.langCodeTo);
     },
     updateItems() {
-      if (this.accSentCounter.length == 0) {
+      if (
+        this.accSentCounter.length == 0 ||
+        this.accSentCounter.length < this.leftData["body"].length
+      ) {
         this.calcSentCounter(this.leftData["body"]);
       }
       this.items = zip(this.leftData["body"], this.rightData["body"]);
