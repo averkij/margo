@@ -10,7 +10,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/margo/',
+  base: '/sheckley/',
   plugins: [vue()],
   resolve: {
     alias: {
