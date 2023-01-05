@@ -18,21 +18,27 @@ export const LANGUAGES = {
         name: "German",
         icon: "🍺"
     },
-    'fr': {
-        langCode: "fr",
-        name: "French",
-        icon: "🥖"
+    'zh': {
+        langCode: "zh",
+        name: "Chinese",
+        icon: "🥢",
+        noSpaceBetweenSentences: true
     },
-    'it': {
-        langCode: "it",
-        name: "Italian",
-        icon: "🍕"
-    },
-    'es': {
-        langCode: "es",
-        name: "Spanish",
-        icon: "🍅"
-    },
+    // 'fr': {
+    //     langCode: "fr",
+    //     name: "French",
+    //     icon: "🥖"
+    // },
+    // 'it': {
+    //     langCode: "it",
+    //     name: "Italian",
+    //     icon: "🍕"
+    // },
+    // 'es': {
+    //     langCode: "es",
+    //     name: "Spanish",
+    //     icon: "🍅"
+    // },
     // 'pt': {
     //     langCode: "pt",
     //     name: "Portugal",
@@ -53,21 +59,21 @@ export const LANGUAGES = {
     //     name: "Polish",
     //     icon: "🍬"
     // },
-    'bu': {
-        langCode: "bu",
-        name: "Belarusian",
-        icon: "🌼"
-    },
-    'uk': {
-        langCode: "uk",
-        name: "Ukrainian",
-        icon: "🌻"
-    },
-    'hu': {
-        langCode: "hu",
-        name: "Hungarian",
-        icon: "🎄"
-    },
+    // 'bu': {
+    //     langCode: "bu",
+    //     name: "Belarusian",
+    //     icon: "🌼"
+    // },
+    // 'uk': {
+    //     langCode: "uk",
+    //     name: "Ukrainian",
+    //     icon: "🌻"
+    // },
+    // 'hu': {
+    //     langCode: "hu",
+    //     name: "Hungarian",
+    //     icon: "🎄"
+    // },
     // 'nl': {
     //     langCode: "nl",
     //     name: "Dutch",
@@ -78,12 +84,6 @@ export const LANGUAGES = {
     //     name: "Sweden",
     //     icon: "⛄️"
     // },
-    'zh': {
-        langCode: "zh",
-        name: "Chinese",
-        icon: "🥢",
-        noSpaceBetweenSentences: true
-    },
     // 'jp': {
     //     langCode: "jp",
     //     name: "Japanese",
