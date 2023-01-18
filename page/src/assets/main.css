@@ -23,7 +23,24 @@ p {
 .s0 {background: #cfefd7; color: "black"}
 .s1 {background: #fadce2; color: "black"}
 .s2 {background: #cce7eb; color: "black"}
-.s3 {background: #fefbd6; color: "black"}
+.s3 {background: #fef9d6; color: "black"}
+
+.g0 {
+  background: linear-gradient(90deg, #cfefd7 0px, #ffffff00 150px);
+  border-radius: 10px;
+}
+.g1 {
+  background: linear-gradient(90deg, #fadce2 0px, #ffffff00 150px);
+  border-radius: 10px;
+}
+.g2 {
+  background: linear-gradient(90deg, #cce7eb 0px, #ffffff00 150px);
+  border-radius: 10px;
+}
+.g3 {
+  background: linear-gradient(90deg, #fefaca 0px, #ffffff00 150px);
+  border-radius: 10px;
+}
 
 .my-toolbar {
   font-weight: bold;

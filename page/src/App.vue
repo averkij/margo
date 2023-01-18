@@ -154,6 +154,9 @@
                   <v-icon v-else-if="colorPrompt == '2'">
                     mdi-numeric-3-circle
                   </v-icon>
+                  <v-icon v-else-if="colorPrompt == '3'">
+                    mdi-numeric-4-circle
+                  </v-icon>
                 </v-btn>
               </v-col>
               <v-col cols="6" class="text-left px-lg-6 px-md-0 px-sm-0 px-0">
@@ -322,7 +325,7 @@ export default {
     },
     changeColorPrompt() {
       let colorPrompt = this.colorPrompt;
-      colorPrompt = (colorPrompt + 1) % 3;
+      colorPrompt = (colorPrompt + 1) % 4;
       localStorage.colorPrompt = colorPrompt;
       this.$store.commit(SET_COLOR_PROMPT, {
         colorPrompt: colorPrompt,
