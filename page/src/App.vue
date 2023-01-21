@@ -30,15 +30,11 @@
     <v-card flat>
       <v-toolbar class="my-toolbar" extended hide-on-scroll flat>
         <v-row>
-          <v-col cols="2">
+          <v-col cols="1">
             <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
           </v-col>
 
-          <v-col cols="4" class="text-center">
-            <v-spacer />
-            <!-- <div class="pa-2 font-josefin d-inline-block">
-              {{ LANGUAGES[langCodeFrom].name }}
-            </div> -->
+          <v-col cols="5" class="text-center">
             <v-menu offset-y>
               <template v-slot:activator="{ props }">
                 <v-btn icon color="blue" v-bind="props">
@@ -68,9 +64,48 @@
                 </v-list-item>
               </v-list>
             </v-menu>
+
+            <!-- LEFT MENU ADDITIONAL ELEMENTS -->
+            <div class="d-none d-md-inline">
+              <v-btn icon @click="setFontSizeLeft(FONT_SIZE_SMALL)">
+                <v-icon :color="iconFontDecreaseLeftIsActive ? 'blue' : 'grey'">
+                  mdi-format-font-size-decrease
+                </v-icon></v-btn
+              >
+              <v-btn icon @click="setFontSizeLeft(FONT_SIZE_LARGE)">
+                <v-icon :color="iconFontIncreaseLeftIsActive ? 'blue' : 'grey'">
+                  mdi-format-font-size-increase
+                </v-icon></v-btn
+              >
+
+              <!-- HIGHLIGHTING -->
+              <span
+                class="
+                  text-overline text-grey
+                  lighten-5
+                  ml-5
+                  d-none d-sm-inline
+                "
+                >Prompt</span
+              >
+              <v-btn icon color="blue" @click="changeColorPrompt()">
+                <v-icon v-if="colorPrompt == '0'">
+                  mdi-numeric-1-circle
+                </v-icon>
+                <v-icon v-else-if="colorPrompt == '1'">
+                  mdi-numeric-2-circle
+                </v-icon>
+                <v-icon v-else-if="colorPrompt == '2'">
+                  mdi-numeric-3-circle
+                </v-icon>
+                <v-icon v-else-if="colorPrompt == '3'">
+                  mdi-numeric-4-circle
+                </v-icon>
+              </v-btn>
+            </div>
           </v-col>
 
-          <v-col cols="4" class="text-center">
+          <v-col cols="5" class="text-center">
             <v-menu offset-y>
               <template v-slot:activator="{ props }">
                 <v-btn icon color="blue" v-bind="props">
@@ -99,16 +134,58 @@
                 </v-list-item>
               </v-list>
             </v-menu>
-            <!-- <div class="pa-2 font-josefin d-inline-block">
-              {{ LANGUAGES[langCodeTo].name }}
-            </div> -->
-            <v-spacer />
+            <!-- LEFT MENU ADDITIONAL ELEMENTS -->
+            <div class="d-none d-md-inline">
+              <!-- RIGHT TEXT FONT SIZE -->
+              <v-btn icon @click="setFontSizeRight(FONT_SIZE_SMALL)">
+                <v-icon
+                  :color="iconFontDecreaseRightIsActive ? 'blue' : 'grey'"
+                >
+                  mdi-format-font-size-decrease
+                </v-icon></v-btn
+              >
+              <v-btn icon @click="setFontSizeRight(FONT_SIZE_LARGE)">
+                <v-icon
+                  :color="iconFontIncreaseRightIsActive ? 'blue' : 'grey'"
+                >
+                  mdi-format-font-size-increase
+                </v-icon></v-btn
+              >
+
+              <!-- RIGHT TEXT VISIBILITY -->
+              <v-btn icon @click="toggleRightText()">
+                <v-icon v-if="showTextRight == '0'" color="grey">
+                  mdi-eye-off-outline
+                </v-icon>
+                <v-icon v-else-if="showTextRight == '1'" color="grey">
+                  mdi-eye-outline
+                </v-icon>
+              </v-btn>
+
+              <!-- LAYOUT MODE -->
+              <span
+                class="
+                  text-overline text-grey
+                  lighten-5
+                  ml-5
+                  d-none d-sm-inline
+                "
+                >Layout</span
+              >
+              <v-btn icon @click="changeLayoutMode()" color="green">
+                <v-icon v-if="layoutMode == '0'"> mdi-numeric-1-circle </v-icon>
+                <v-icon v-if="layoutMode == '1'"> mdi-numeric-2-circle </v-icon>
+                <v-icon v-if="layoutMode == '2'"> mdi-numeric-3-circle </v-icon>
+              </v-btn>
+            </div>
           </v-col>
         </v-row>
+
+        <!-- SECOND ROW MENU -->
         <template v-slot:extension>
-          <v-container>
+          <v-container class="d-md-none">
             <v-row class="px-lg-14 px-md-1">
-              <v-col cols="6" class="text-left px-lg-6 px-md-4 px-sm-2 px-0">
+              <v-col cols="6" class="text-center px-lg-6 px-md-4 px-sm-2 px-0">
                 <v-btn icon @click="setFontSizeLeft(FONT_SIZE_SMALL)">
                   <v-icon
                     :color="iconFontDecreaseLeftIsActive ? 'blue' : 'grey'"
@@ -159,7 +236,7 @@
                   </v-icon>
                 </v-btn>
               </v-col>
-              <v-col cols="6" class="text-left px-lg-6 px-md-0 px-sm-0 px-0">
+              <v-col cols="6" class="text-center px-lg-6 px-md-0 px-sm-0 px-0">
                 <!-- RIGHT TEXT FONT SIZE -->
                 <v-btn icon @click="setFontSizeRight(FONT_SIZE_SMALL)">
                   <v-icon
