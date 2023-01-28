@@ -17,8 +17,9 @@ Books were aligned with the [Lingtrain Alignment Studio](https://github.com/aver
    - assets/img
 2. Update PARTS_AMOUNT
 3. Update LANGUAGES
-4. Update vite.config.js
+4. Update SHOW_TITLE
+5. Update vite.config.js
    `base: '/<your_book_name>/'`
-5. Build book
+6. Build book
    `npm run build`
-6. Copy to your GitHub
+7. Copy to your GitHub
