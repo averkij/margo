@@ -87,6 +87,42 @@
         </div>
       </div>
     </p>
+    <p v-else-if="data.t == 'qtext'">
+      <div>
+        <div v-if="mode == '2' && data && data2" >
+          <span>
+              <span
+                :class="[ 'qtext',
+                  { fs: fontLeft == '1' },
+                  { fl: fontLeft == '2' }
+                ]"
+              >
+                {{ data }}
+              </span>
+              <span
+                v-if="showTextRight=='1'"
+                :class="[ 'qtext',
+                  { fs: fontRight == '1' },
+                  { fl: fontRight == '2' }
+                ]"
+              >
+                {{ data2 }}
+              </span>
+          </span>
+        </div>
+        <div v-else>
+          <span>
+              <span
+                :class="[ 'qtext',
+                  { h: isHovering || i == highlightNum },
+                ]"
+              >
+                {{ data.c }}&nbsp;
+              </span>
+          </span>
+        </div>
+      </div>
+    </p>
   </div>
 </template>
 
